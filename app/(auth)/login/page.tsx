@@ -4,9 +4,43 @@ import React, { useState } from "react";
 import { Eye, EyeOff, Github, Zap, Command } from "lucide-react";
 import Link from "next/link";
 import s from "./style.module.css"; 
+import toast from "react-hot-toast";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+
+  const handleSubmit = async () => {
+    setLoading(true)
+
+    if(!password || !email) {
+      toast.error("Both the fields are required !!")
+      setLoading(false);
+      return;
+    }
+
+    const res = await signIn('credentials', {
+      username: email,
+      password: password,
+      redirect: false
+    })
+
+    if(!res?.error) {
+      setLoading(false);
+      router.push("/")
+      toast.success("successfully signed in !!")
+    } else {
+      // can handle various cases here depending upon what status code does credentials provider send
+      setLoading(false);
+      toast.error("enter valid credentials")
+    }
+  }
 
   return (
     <div className={s.container}>
@@ -44,6 +78,8 @@ export default function LoginPage() {
               <label className={s.label}>Email Address</label>
               <input 
                 type="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com" 
                 className={s.input} 
               />
@@ -55,6 +91,8 @@ export default function LoginPage() {
               <div className={s.inputWrapper}>
                 <input 
                   type={showPassword ? "text" : "password"} 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••••••" 
                   className={s.input} 
                 />
@@ -79,7 +117,7 @@ export default function LoginPage() {
               </Link>
             </div>
 
-            <button type="button" className={s.submitBtn}>
+            <button onClick={handleSubmit} disabled={loading} type="button" className={s.submitBtn}>
               Sign In
             </button>
           </form>
