@@ -1,0 +1,160 @@
+/* app/habits/new/step1/style.module.css */
+
+/* --- LAYOUT & BACKGROUND (Glass Setup) --- */
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* 🖼️ Reusing Dashboard Background */
+  background-image: url('https://i.pinimg.com/1200x/68/a1/0e/68a10efadb9f7044fba3a3e10d587f89.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  
+  font-family: sans-serif;
+  color: #ffffff;
+}
+
+/* --- FORM CARD (The Glass Panel) --- */
+.formCard {
+  width: 100%;
+  max-width: 650px;
+  padding: 3rem;
+  
+  /* GLASSOMORPHISM EFFECT */
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.stepTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.stepSubtitle {
+  color: #a1a1aa;
+}
+
+/* Progress Bar */
+.progressContainer {
+  height: 8px;
+  background-color: #27272a;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.progressBar {
+  height: 100%;
+  width: 33.33%; /* Step 1 of 3 */
+  background-color: #818cf8; /* Light blue accent */
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+/* --- FORM ELEMENTS --- */
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+  grid-column: span 2; /* Default full width */
+}
+
+.formGroup.half {
+  grid-column: span 1; /* Half width */
+}
+
+.label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #e5e5e5;
+  margin-bottom: 0.5rem;
+}
+
+.input, .select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #3f3f46;
+  border-radius: 0.5rem;
+  color: white;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.input:focus, .select:focus {
+  border-color: #818cf8;
+}
+
+.textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Custom Day Selection */
+.dayGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.dayBtn {
+  background-color: #27272a;
+  color: #a1a1aa;
+  padding: 0.5rem 0;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.dayBtn:hover {
+  background-color: #3f3f46;
+}
+
+.dayBtnActive {
+  background-color: #818cf8;
+  color: white;
+  border-color: #818cf8;
+}
+
+/* --- ACTION BUTTONS --- */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.nextBtn {
+  background-color: #818cf8;
+  color: black;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nextBtn:hover {
+  background-color: #6366f1;
+}

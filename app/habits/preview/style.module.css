@@ -1,0 +1,182 @@
+/* app/habits/preview/style.module.css */
+
+/* --- LAYOUT & BACKGROUND --- */
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Shared Background */
+  background-image: url('https://i.pinimg.com/1200x/68/a1/0e/68a10efadb9f7044fba3a3e10d587f89.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  
+  font-family: sans-serif;
+  color: #ffffff;
+}
+
+/* --- OUTER GLASS WRAPPER --- */
+.glassContainer {
+  width: 100%;
+  max-width: 700px;
+  padding: 2.5rem;
+  
+  background-color: rgba(0, 0, 0, 0.5); /* Slightly darker for focus */
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #a1a1aa;
+}
+
+/* --- THE EMAIL PAPER (Visual simulation of an inbox) --- */
+.emailPaper {
+  background-color: #ffffff; /* Real paper look */
+  color: #18181b; /* Dark text for readability */
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Email Header (From/To/Subject) */
+.emailHeader {
+  background-color: #f8fafc; /* Light grey header */
+  padding: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.senderInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.senderAvatar {
+  width: 42px;
+  height: 42px;
+  background-color: #dbeafe; /* Light blue circle */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.senderName {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0f172a;
+  display: block;
+}
+
+.senderEmail {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.timestamp {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.subjectLine {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #0f172a;
+}
+
+/* Email Body */
+.emailBody {
+  padding: 2rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #334155;
+  white-space: pre-wrap; /* Preserves line breaks */
+}
+
+/* Simulated AI Signature */
+.signature {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #cbd5e1;
+  font-size: 0.9rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* --- ACTION BAR --- */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.secondaryActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.outlineBtn {
+  background: transparent;
+  color: #a1a1aa;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #3f3f46;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.outlineBtn:hover {
+  border-color: #e5e5e5;
+  color: white;
+}
+
+.confirmBtn {
+  background-color: #818cf8; /* Brand Indigo */
+  color: black;
+  font-weight: 700;
+  padding: 0.75rem 2.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.confirmBtn:hover {
+  background-color: #6366f1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}

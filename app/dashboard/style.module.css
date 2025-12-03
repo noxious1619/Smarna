@@ -1,0 +1,233 @@
+/* app/dashboard/style.module.css */
+
+/* --- LAYOUT & BACKGROUND (Glass Setup) --- */
+.container {
+  display: flex;
+  min-height: 100vh;
+  /* 🖼️ BACKGROUND IMAGE SETUP */
+  background-image: url('https://i.pinimg.com/1200x/68/a1/0e/68a10efadb9f7044fba3a3e10d587f89.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  
+  color: #ffffff;
+  font-family: sans-serif;
+}
+
+/* --- THE LEFT GLASS CARD (Main Content Wrapper) --- */
+.mainContent {
+  flex: 1;
+  padding: 3rem;
+  margin: 2rem 350px 2rem 2rem; /* Add outer margin for the glass card effect */
+  border-radius: 1.5rem;
+  
+  /* GLASSOMORPHISM EFFECT */
+  background-color: rgba(0, 0, 0, 0.4); /* Transparent dark background */
+  backdrop-filter: blur(20px); /* The key blur effect */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* --- THE RIGHT GLASS CARD (Sidebar) --- */
+.sidebar {
+  width: 300px;
+  /* GLASSOMORPHISM EFFECT */
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+  
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: fixed;
+  right: 1rem; 
+  height: calc(100vh - 4rem); /* Match height to main content margin */
+  top: 2rem;
+  overflow-y: auto;
+  margin-left: 5rem;
+}
+
+/* --- SIDEBAR WIDGETS --- */
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Lighter divider */
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent bg */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+/* Heatmap - REMOVED (Previous step) */
+
+/* Next Up Widget - Needs Glass */
+.widgetTitle {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a1a1aa;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.nextUpCard {
+  background: rgba(255, 255, 255, 0.1); /* Lighter semi-transparent background */
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nextUpTime {
+  color: #818cf8; /* Light Blue/Indigo accent */
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+
+/* --- MAIN AREA (Header/Filters/Grid inside the left glass card) --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+}
+
+/* Filters */
+.filterBar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1rem;
+}
+
+.filterTab {
+  background: none;
+  border: none;
+  color: #a1a1aa;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  transition: all 0.2s;
+}
+
+.activeTab {
+  background-color: rgba(255, 255, 255, 0.1); /* Glass background for active tab */
+  color: white;
+}
+
+/* Card */
+.habitGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.habitCard {
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Defined border */
+  border-radius: 1rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.habitCard:hover {
+  border-color: #818cf8; /* Light blue accent on hover */
+  transform: translateY(-2px);
+}
+
+.cardTime {
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Toggle Switch */
+.toggleBtn {
+  width: 40px;
+  height: 22px;
+  background-color: rgba(255, 255, 255, 0.1); /* Glass background */
+  border-radius: 20px;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.toggleHandle {
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s;
+}
+
+/* --- MODAL (POPUP) --- */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* KEEP BLUR HERE for safety, but the main blur is applied to the cards */
+  backdrop-filter: blur(8px); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modalContent {
+  /* GLASSOMORPHISM APPLIED HERE TOO */
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(30px); /* Slightly stronger blur for the modal */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+  max-width: 500px;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modalClose {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: #a1a1aa;
+  cursor: pointer;
+}
+
+.modalPersona {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin: 1.5rem 0;
+}

@@ -1,0 +1,139 @@
+/* app/habits/success/style.module.css */
+
+/* --- LAYOUT & BACKGROUND --- */
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Shared Background */
+  background-image: url('https://i.pinimg.com/1200x/68/a1/0e/68a10efadb9f7044fba3a3e10d587f89.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  
+  font-family: sans-serif;
+  color: #ffffff;
+}
+
+/* --- GLASS CARD --- */
+.successCard {
+  width: 100%;
+  max-width: 500px;
+  padding: 3rem;
+  text-align: center;
+  
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* --- SUCCESS ICON --- */
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(34, 197, 94, 0.2); /* Green tint */
+  border: 2px solid #22c55e; /* Green border */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem auto;
+  color: #22c55e;
+  
+  /* Animation */
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 20px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #ffffff, #a1a1aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: #a1a1aa;
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.5;
+}
+
+/* --- SUMMARY TICKET --- */
+.summaryTicket {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+
+.ticketLabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #71717a;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.ticketValue {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.ticketRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ticketItem {
+  flex: 1;
+}
+
+/* --- BUTTON --- */
+.dashboardBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  background-color: #818cf8; /* Indigo */
+  color: black;
+  font-weight: 700;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.dashboardBtn:hover {
+  background-color: #6366f1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}

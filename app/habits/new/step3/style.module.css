@@ -1,0 +1,221 @@
+/* app/habits/new/step3/style.module.css */
+
+/* --- LAYOUT & BACKGROUND --- */
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Reuse Dashboard Background */
+  background-image: url('https://i.pinimg.com/1200x/68/a1/0e/68a10efadb9f7044fba3a3e10d587f89.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  
+  font-family: sans-serif;
+  color: #ffffff;
+}
+
+/* --- GLASS CARD --- */
+.formCard {
+  width: 100%;
+  max-width: 800px; /* Wider card for the persona grid */
+  padding: 3rem;
+  
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.stepTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.stepSubtitle {
+  color: #a1a1aa;
+}
+
+/* Progress Bar (100% Complete) */
+.progressContainer {
+  height: 8px;
+  background-color: #27272a;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.progressBar {
+  height: 100%;
+  width: 100%; /* Fully filled */
+  background-color: #818cf8;
+  border-radius: 4px;
+}
+
+/* --- PERSONA GRID --- */
+.sectionLabel {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e5e5e5;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.personaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 Columns */
+  gap: 1rem;
+}
+
+.personaCard {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid #3f3f46;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.personaCard:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #71717a;
+}
+
+.activePersona {
+  background-color: rgba(129, 140, 248, 0.15); /* Indigo tint */
+  border-color: #818cf8;
+  box-shadow: 0 0 0 1px #818cf8;
+}
+
+.personaEmoji {
+  font-size: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+}
+
+.personaTitle {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.personaDesc {
+  font-size: 0.85rem;
+  color: #a1a1aa;
+  line-height: 1.4;
+}
+
+/* --- OTHER OPTIONS --- */
+.optionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.radioLabel:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.radioLabelActive {
+  background-color: rgba(129, 140, 248, 0.15);
+  border-color: #818cf8;
+}
+
+.radioInput {
+  accent-color: #818cf8;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+/* Checkbox Toggle */
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  margin-top: 1rem;
+  border: 1px solid #3f3f46;
+}
+
+.checkbox {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: #818cf8;
+}
+
+/* --- ACTION BUTTONS --- */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.backBtn {
+  background: transparent;
+  color: #a1a1aa;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border: 1px solid #3f3f46;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.backBtn:hover {
+  border-color: #e5e5e5;
+  color: white;
+}
+
+.finishBtn {
+  background-color: #818cf8;
+  color: black;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.finishBtn:hover {
+  background-color: #6366f1;
+}
