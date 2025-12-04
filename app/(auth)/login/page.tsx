@@ -42,6 +42,10 @@ export default function LoginPage() {
     }
   }
 
+  const handleGoogleSignin = () => {
+    signIn('google', {callbackUrl: "/"})
+  }
+
   return (
     <div className={s.container}>
       <div className={s.card}>
@@ -129,7 +133,7 @@ export default function LoginPage() {
           </div>
 
           <div className={s.socialGrid}>
-            <button className={s.socialBtn}><span className="font-bold text-lg">G</span></button>
+            <button onClick={handleGoogleSignin} className={s.socialBtn}><span className="font-bold text-lg">G</span></button>
             <button className={s.socialBtn}><Github size={20} /></button>
             <button className={s.socialBtn}><Command size={20} /></button>
           </div>

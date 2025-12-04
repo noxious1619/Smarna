@@ -2,6 +2,7 @@ import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import db from "@/db"
 import bcrypt from "bcrypt"
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions = {
     providers: [
@@ -40,10 +41,6 @@ export const authOptions = {
                     return null
                 }
 
-                // if(password !== 'test123') {
-                //     return null
-                // }
-
                 return {
                     id: existingUser.id.toString(),
                     email: existingUser.email,
@@ -51,10 +48,52 @@ export const authOptions = {
                     name: existingUser.name
                 }
             }   
+        }),
+
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID!,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET!
         })
     ],
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
         signIn: '/login'
+    },
+    callbacks: {
+        async jwt ({token, account, profile}) {
+            console.log(profile);
+
+            if(account?.provider === 'google') {
+                const user = await db.user.upsert({
+                where: { 
+                    email: profile!.email
+                },
+                update: {}, 
+                create: {
+                    email: profile!.email as string,
+                    name: profile!.name as string,
+                    username: profile!.email as string, 
+                    password: "", 
+                    refreshToken: "", 
+                    timeZone: "",
+                }
+                });
+
+                token.id = user.id.toString();
+                token.email = user.email
+                token.name = user.name
+            }
+
+            return token;
+        },
+
+        async session ({session, token}) {
+            if(session?.user && token) {
+                (session.user)!.email = token.email as string;
+                (session.user)!.name = token.name as string;
+            }
+
+            return session;
+        }
     }
 } satisfies NextAuthOptions
