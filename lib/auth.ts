@@ -34,15 +34,15 @@ export const authOptions = {
                     return null
                 }
 
-                // const isPasswordValid = await bcrypt.compare(password, existingUser.password)
+                const isPasswordValid = await bcrypt.compare(password, existingUser.password)
 
-                // if(!isPasswordValid) {
-                //     return null
-                // }
-
-                if(password !== 'test123') {
+                if(!isPasswordValid) {
                     return null
                 }
+
+                // if(password !== 'test123') {
+                //     return null
+                // }
 
                 return {
                     id: existingUser.id.toString(),

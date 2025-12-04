@@ -4,9 +4,48 @@ import React, { useState } from "react";
 import { Eye, EyeOff, Github, Zap, Command } from "lucide-react";
 import Link from "next/link";
 import s from "./style.module.css"; 
+import toast from "react-hot-toast";
+import axios from "axios"
+import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  const handleSignup = async () => {
+    if(!email || !username || !name || !password) {
+      toast.error("All fields are required !!");
+      return;
+    }
+
+    try {
+      setLoading(true);
+  
+      const res = await axios.post("/api/auth/signup", {
+        email,
+        username, 
+        password, 
+        name
+      })
+
+      if(res) {
+        toast.success("User Signed up successfully !!")
+        router.push("/login")
+      }else {
+        toast.error("Something went wrong while signing you up !!");
+      }
+    } catch (error: any) {
+      console.log(error)
+      toast.error(error.response?.data?.error || "Something went wrong, pls try again !!")
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className={s.container}>
@@ -45,7 +84,19 @@ export default function SignupPage() {
               <label className={s.label}>Full Name</label>
               <input 
                 type="text" 
-                placeholder="e.g. David Goggins" 
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="e.g. John Doe" 
+                className={s.input} 
+              />
+            </div>
+
+            <div>
+              <label className={s.label}>username</label>
+              <input 
+                type="text" 
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 className={s.input} 
               />
             </div>
@@ -54,6 +105,8 @@ export default function SignupPage() {
               <label className={s.label}>Email Address</label>
               <input 
                 type="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com" 
                 className={s.input} 
               />
@@ -64,7 +117,8 @@ export default function SignupPage() {
               <div className={s.inputWrapper}>
                 <input 
                   type={showPassword ? "text" : "password"} 
-                  placeholder="Must be at least 8 characters" 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className={s.input} 
                 />
                 <button 
@@ -77,7 +131,7 @@ export default function SignupPage() {
               </div>
             </div>
 
-            <button type="button" className={s.submitBtn}>
+            <button onClick={handleSignup} disabled={loading} type="button" className={s.submitBtn}>
               Create Free Account
             </button>
           </form>
