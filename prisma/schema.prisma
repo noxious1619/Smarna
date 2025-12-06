@@ -13,7 +13,7 @@ datasource db {
   provider = "postgresql"
 }
 
-enum Frequency {
+enum Frequency { 
   DAILY
   WEEKLY
   CUSTOM
@@ -26,21 +26,31 @@ model User {
   password     String
   username     String @unique
   refreshToken String
-  timeZone     String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
   habits       Habit[]
 }
 
 model Habit {
-  id           Int       @id @default(autoincrement())
-  title        String
-  description  String
-  goal         String
-  frequency    Frequency
-  reminderTime DateTime
-  startDate    DateTime
-  endDate      DateTime
-  personality  String
-  emailStyle   String
-  userId       Int
-  user         User      @relation(fields: [userId], references: [id])
+  id            Int       @id @default(autoincrement())
+  title         String
+  description   String
+  goal          String
+  frequency     Frequency
+  duration      Int
+  reminderTime  String         // Stored as string "HH:MM" (e.g., "08:30")
+  timeZone      String         // IANA string (e.g., "Asia/Kolkata")
+  startDate     DateTime
+  endDate       DateTime
+  personality   String
+  emailStyle    String
+  languageStyle String
+  includeQuote  Boolean
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  userId        Int
+  user          User      @relation(fields: [userId], references: [id])
 }
+
+//An IANA time zone string is the international standard way to identify a specific time zone in code. It acts like a "unique ID card" for every region's time rules.//
+//It is a standardized code (like "Asia/Kolkata") representing a specific location's time rules. Unlike fixed numbers (like UTC+5), this string automatically adjusts for Daylight Saving Time. It ensures your app sends reminders at the correct local time year-round, without you ever needing to calculate clock changes manually.//

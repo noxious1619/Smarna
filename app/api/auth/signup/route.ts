@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
                 {status: 500}
             )
         }
-    
+
         return NextResponse.json(
             {messsage: "User created successfully !!", user: createUser},
             {status: 201}
